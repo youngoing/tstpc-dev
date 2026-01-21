@@ -441,7 +441,9 @@ export class StandaloneHttpServer<T extends StandaloneServiceType = StandaloneSe
           this.flows.preApiCall,
           { apiName, req, connId: context.connId },
           context,
-          () => { shouldContinue = true }
+          () => {
+            shouldContinue = true
+          }
         )
         if (!shouldContinue) {
           return {
@@ -526,7 +528,9 @@ export class StandaloneHttpServer<T extends StandaloneServiceType = StandaloneSe
           this.flows.preMsgReceive,
           { msgName, msg, connId: context.connId },
           context,
-          () => { shouldContinue = true }
+          () => {
+            shouldContinue = true
+          }
         )
         if (!shouldContinue) {
           context.logger.debug("消息被中间件拒绝")
